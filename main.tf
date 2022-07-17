@@ -20,7 +20,7 @@ module "vpc" {
     Environment = "dev01"
   }
 }
-
+/*
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 18.0"
@@ -67,3 +67,4 @@ module "eks" {
     Terraform   = "true"
   }
 }
+*/
