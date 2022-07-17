@@ -17,7 +17,7 @@ module "vpc" {
 
   tags = {
     Terraform = "true"
-    Environment = "dev"
+    Environment = "dev01"
   }
 }
 
@@ -52,8 +52,7 @@ module "eks" {
 # /crops -> efs
 
   eks_managed_node_groups = {
-    blue = {}
-    green = {
+    ms_nodes = {
       min_size     = 1
       max_size     = 5
       desired_size = 1
@@ -63,28 +62,8 @@ module "eks" {
     }
   }
 
-  # aws-auth configmap
-  manage_aws_auth_configmap = true
-
-  aws_auth_users = [
-    {
-      userarn  = "arn:aws:iam::076192671039:user/bharathpantala"
-      username = "bharathpantala"
-      groups   = ["system:masters"]
-    },
-    {
-      userarn  = "arn:aws:iam::076192671039:user/suresh"
-      username = "suresh"
-      groups   = ["system:masters"]
-    },
-  ]
-
-  aws_auth_accounts = [
-    "076192671039",
-  ]
-
   tags = {
-    Environment = "dev"
+    Environment = "dev01"
     Terraform   = "true"
   }
 }
